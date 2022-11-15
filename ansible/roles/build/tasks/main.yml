@@ -1,12 +1,6 @@
+
 ---
-# tasks file for buildDocker
-#- name: install npm
- # apt: name=npm
-#- name: running npm install
- # shell: npm install /var/lib/jenkins/workspace/devops
-#buid project
-		- name: install
-		  shell: npm install		
+#buid project	
 		- name: build app
  		  shell: ng build --prod 
 
