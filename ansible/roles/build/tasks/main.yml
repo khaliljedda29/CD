@@ -1,6 +1,8 @@
 
 ---
 #buid project	
+                 - name: install
+                   shell: npm install
                  - name: build app
                    shell: ng build --prod 
 
