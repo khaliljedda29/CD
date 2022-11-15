@@ -5,7 +5,9 @@
 #- name: running npm install
  # shell: npm install /var/lib/jenkins/workspace/devops
 #buid project
-- name: build app
-  shell: ng build --prod && chmod 777 -R /var/lib/jenkins/workspace/devops/dist/
+		- name: install
+		  shell: npm install		
+		- name: build app
+ 		  shell: ng build --prod 
 
 
