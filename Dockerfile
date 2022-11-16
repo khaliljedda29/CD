@@ -1,7 +1,10 @@
-FROM nginx:1.17.1-alpine
+FROM node:latest as node
+WORKDIR /app
+COPY . .
+RUN npm install --force
+ENV NODE_OPTIONS=--openssl-legacy-provider
+RUN npm run build 
 
-COPY ./dist/appcloud /usr/share/nginx/html
-
-EXPOSE 4201
-
-CMD ["nginx", "-g", "daemon off;"]
+# stage 2 for prod 
+FROM nginx:alpine
+COPY --from=node /app/dist/myapp /usr/share/nginx/html
