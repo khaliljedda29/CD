@@ -1,10 +1,4 @@
-FROM node:latest as node
-WORKDIR /app
-COPY . .
-RUN npm install --force
-ENV NODE_OPTIONS=--openssl-legacy-provider
-RUN npm run build 
-
-# stage 2 for prod 
-FROM nginx:alpine
-COPY --from=node /app/dist/myapp /usr/share/nginx/html
+FROM nginx:1.17.1-alpine
+COPY ./dist/my-app /usr/share/nginx/html
+EXPOSE 4200
+CMD ["nginx", "-g", "daemon off;"]
