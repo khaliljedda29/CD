@@ -13,7 +13,7 @@
 - name: run container docker
   docker_container:
     name: myapp_container
-    image: devops:latest
+    image: khalil29/devops:latest
     state: started
     recreate: true
     ports:
